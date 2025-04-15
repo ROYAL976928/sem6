@@ -1,4 +1,4 @@
-(A) document1 ="The quick brown fox jumped over the lazy 
+document1 ="The quick brown fox jumped over the lazy 
 dog." document2 = "The lazy dog slept in the sun." 
 tokens1 = document1.lower().split() tokens2 = 
 document2.lower().split() terms = 
