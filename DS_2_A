@@ -1,0 +1,12 @@
+#A
+# Read data from a csv file import pandas as pd 
+df = pd.read_csv('Student_Marks.csv') 
+print("Our dataset ")
+print(df)
+
+
+#B
+# Reading data from a JSON file 
+import pandas as pd
+data = pd.read_json('dataset.json') 
+print(data)
