@@ -1,0 +1,34 @@
+Practical 9
+
+#sudo apt-get update && sudo apt-get upgrade
+
+#curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+#curl -o awscliv2.sig https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig
+
+#unzip awscliv2.zip
+#sudo ./aws/install
+#pip3 install aws-sam-cli
+
+
+CLISelect 1
+st option to use AWS Quick Ttart Templates
+
+Select Template no.1 Hello World Example
+
+Step 9: Type “N” if it ask to use most popular runtime and package type
+Open new terminal by pressing ctrl+shift+T and check for python version by command
+python –version
+Select the option according to your python version in my case its option 19- python 3.11
+
+Step 10: Select package type as Zip
+
+Give project name as per your preference in my case its sam-app-test
+
+Step 12: Now one folder will be created by your provided project name go into that folder by
+command cd (folder name)
+After entering the project folder we will invoke the HelloWorldFunction by using commandsam
+local invoke „HelloWorldFunction‟
+
+
+Step 13: Type command sam local start-api this will give you URL open it in any browser.
