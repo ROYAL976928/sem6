@@ -1,0 +1,17 @@
+Practical 7 
+
+lab@lab-Vostro-3470 :~$ sudo apt upgrade
+$ sudo apt update
+$ sudo apt install virt-manager
+$ Sudo virt-manager
+
+File> new virtual machine>local install media (ISO image or CDROM)>click forward
+
+Click on Browse➔ Browse local ➔ select downloaded iso file ➔ Open
+
+
+Uncheck The checkbox and Choose the OS you are installing as “Generic default” and click“Forward”
+
+Foss-Cloud installer :default boot options>yes>select Demo system
+
+Enter the Device name as “sda” and press enter
