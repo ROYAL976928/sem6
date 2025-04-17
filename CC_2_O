@@ -1,0 +1,183 @@
+pom.xml
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId>
+
+  <artifactId>SimpleSOAPService</artifactId>
+
+  <version>0.0.1-SNAPSHOT</version>
+
+  <dependencies>
+
+        <!-- Apache CXF for JAX-WS -->
+
+        <dependency>
+
+            <groupId>org.apache.cxf</groupId>
+
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+
+            <version>3.4.5</version>
+
+        </dependency>
+
+
+
+        <!-- Apache CXF HTTP Transport -->
+
+        <dependency>
+
+            <groupId>org.apache.cxf</groupId>
+
+            <artifactId>cxf-rt-transports-http</artifactId>
+
+            <version>3.4.5</version>
+
+        </dependency>
+
+
+
+        <!-- Apache CXF HTTP Jetty Transport (for embedded HTTP server) -->
+
+        <dependency>
+
+            <groupId>org.apache.cxf</groupId>
+
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+
+            <version>3.4.5</version>
+
+        </dependency>
+
+
+
+        <!-- Jakarta XML WS (JAX-WS API) -->
+
+        <dependency>
+
+            <groupId>jakarta.xml.ws</groupId>
+
+            <artifactId>jakarta.xml.ws-api</artifactId>
+
+            <version>2.3.3</version>
+
+        </dependency>
+
+
+
+        <!-- Java Annotations -->
+
+        <dependency>
+
+            <groupId>javax.annotation</groupId>
+
+            <artifactId>javax.annotation-api</artifactId>
+
+            <version>1.3.2</version>
+
+        </dependency>
+
+    </dependencies>
+
+</project>
+File Name: CalculatorService.java
+
+Code:
+package com.example;
+
+import javax.jws.WebMethod;
+import javax.jws.WebService;
+
+@WebService
+public interface CalculatorService {
+	@WebMethod
+	int add(int num1, int num2);
+
+	@WebMethod
+	int subtract(int num1, int num2);
+}
+
+Step 5: Implement the Service
+
+Now, create a class that implements the CalculatorService interface.
+
+1.	Right-click on com.example → New → Class and name it CalculatorServiceImpl.java.
+
+2.	Add the following code to CalculatorServiceImpl.java:
+
+
+
+File Name: CalculatorServiceImpl.java
+
+
+
+Code:
+
+package com.example;
+
+
+
+import javax.jws.WebService;
+
+
+
+@WebService(endpointInterface = "com.example.CalculatorService")
+
+public class CalculatorServiceImpl implements CalculatorService {
+
+
+
+    @Override
+
+    public int add(int num1, int num2) {
+
+        return num1 + num2;
+
+    }
+
+    @Override
+
+    public int subtract(int num1, int num2) {
+
+        return num1 - num2;
+
+    }
+
+}
+
+File Name: SOAPServer.java
+
+Code:  package com.example;
+
+
+
+import javax.xml.ws.Endpoint;
+
+
+
+public class SOAPServer {
+
+    public static void main(String[] args) {
+
+        // Create an instance of the service implementation
+
+        CalculatorServiceImpl implementor = new CalculatorServiceImpl();
+
+
+
+        // Publish the service
+
+        String address = "http://localhost:8080/CalculatorService";
+
+        Endpoint.publish(address, implementor);
+
+
+
+        System.out.println("SOAP Service started at " + address);
+
+    }
+
+}				Save It
