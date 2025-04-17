@@ -1,0 +1,34 @@
+Practical 5 
+
+
+sudo apt update && sudo apt upgrade -y
+2.	Check if Virtualization is Enabled:
+sudo grep -c "svm\|vmx" /proc/cpuinfo
+3.	Verify KVM Virtualization
+Check if KVM virtualization is enabled by running command:
+kvm-ok
+If the kvm-ok command is not found, install the CPU checker tool: sudo apt install cpu-checker
+then type kvm-ok
+Output should include:
+INFO: /dev/kvm exists
+KVM acceleration can be used.
+
+4.	Install KVM and Required Packages
+   
+sudo apt install qemu-kvm virt-manager libvirt-daemon-system libvirt-clients bridge-utils -y
+
+5.	Enable the Virtualization Daemon Start and enable the libvirt daemon:
+sudo systemctl enable libvirtd 
+sudo systemctl start libvirtd
+
+
+
+6.	Check the Status of the Libvirt Daemon
+
+Verify that the daemon is running:
+sudo systemctl status libvirtd
+7.	Add Your User to KVM and Libvirt Groups
+Replace your-username with your actual username and run the following commands:
+
+sudo usermod -aG kvm your-username 
+sudo usermod -aG libvirt your-username
